@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Syne', sans-serif;
+  }
+
+  body {
+    @apply bg-[#14141B] text-white;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative text-white/80 hover:text-white transition-colors;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-0 h-[1px] bg-white transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .category-btn {
+    @apply px-6 py-3 rounded-full border-2 transition-all duration-300 font-medium;
+  }
+
+  .category-btn.active {
+    @apply bg-white text-[#14141B] border-white;
+  }
+
+  .category-btn:not(.active) {
+    @apply border-white/20 hover:border-white;
+  }
+
+  .product-card {
+    @apply relative bg-[#1E1E2A] rounded-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2;
+  }
+
+  .product-card-overlay {
+    @apply absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 
+           flex items-center justify-center gap-4;
+  }
+
+  .action-btn {
+    @apply p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors;
+  }
+
+  .cart-modal {
+    @apply fixed inset-0 bg-black/50 z-50 flex justify-end;
+  }
+
+  .cart-content {
+    @apply bg-[#1E1E2A] w-full max-w-md p-6 h-full overflow-y-auto;
+  }
+
+  .quantity-btn {
+    @apply px-2 py-1 bg-white/10 rounded hover:bg-white/20 transition-colors;
+  }
+
+  .checkout-btn {
+    @apply w-full py-3 bg-white text-[#14141B] rounded-full font-bold hover:bg-white/90 transition-colors;
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/20 rounded-full hover:bg-white/30 transition-colors;
+}
